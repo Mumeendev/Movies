@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies - MovieLearn</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="nav-brand-link">
+                    <span class="logo">🎬</span>
+                    <span class="brand-text">MovieLearn</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="movies.html" class="active">Movies</a></li>
+                <li><a href="index.html#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Movies Hero -->
+    <section class="movies-hero">
+        <div class="floating-movies">
+            <img class="floating-movie" src="https://image.tmdb.org/t/p/w200/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg" alt="Movie">
+            <img class="floating-movie" src="https://image.tmdb.org/t/p/w200/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg" alt="Movie">
+            <img class="floating-movie" src="https://image.tmdb.org/t/p/w200/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg" alt="Movie">
+            <img class="floating-movie" src="https://image.tmdb.org/t/p/w200/neZ0ykEsP8eAbcwDCPPF3fjVpOm.jpg" alt="Movie">
+            <img class="floating-movie" src="https://image.tmdb.org/t/p/w200/1TDV5ILRBDBLWwBwBhL3fYcYhKk.jpg" alt="Movie">
+            <img class="floating-movie" src="https://image.tmdb.org/t/p/w200/jHWmNrTm544HK0dG3vYkI6aKjLq.jpg" alt="Movie">
+            <img class="floating-movie" src="https://image.tmdb.org/t/p/w200/wrCVHdkBlwwYNHqLqLqLqLqLqL.jpg" alt="Movie">
+            <img class="floating-movie" src="https://image.tmdb.org/t/p/w200/hTP1DtLGF1FqYs8qLqLqLqLqLqL.jpg" alt="Movie">
+            <img class="floating-movie" src="https://image.tmdb.org/t/p/w200/x2MxHqLqLqLqLqLqLqLqLqLqLqL.jpg" alt="Movie">
+            <img class="floating-movie" src="https://image.tmdb.org/t/p/w200/wjQ6ZbqWJkZ5qMqLqLqLqLqLqL.jpg" alt="Movie">
+            <img class="floating-movie" src="https://image.tmdb.org/t/p/w200/tD8WjMgFYdXbqTjKHVjBwJpXGfE.jpg" alt="Movie">
+            <img class="floating-movie" src="https://image.tmdb.org/t/p/w200/3JkSF5Y4rV8gXqCJbqLqJqLqLqJ.jpg" alt="Movie">
+        </div>
+        <div class="container">
+            <h1 class="movies-hero-title">Explore Movies</h1>
+            <p class="movies-hero-subtitle">Discover, learn, and rate your favorite films</p>
+        </div>
+    </section>
+
+    <!-- Movies Section -->
+    <section id="movies" class="movies-section">
+        <div class="container">
+            <div id="category-tabs" class="category-tabs"></div>
+            <div id="movies-grid" class="movies-grid"></div>
+        </div>
+    </section>
+
+    <!-- Movie Preview Modal -->
+    <div id="preview-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body" class="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="about" class="footer">
+        <div class="container">
+            <p>&copy; 2026 MovieLearn. Learn, Explore, and Enjoy Movies.</p>
+        </div>
+    </footer>
+
+    <script src="movies.js"></script>
+</body>
+</html>

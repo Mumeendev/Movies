@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details - MovieLearn</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="nav-brand-link">
+                    <span class="logo">🎬</span>
+                    <span class="brand-text">MovieLearn</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="movies.html">Movies</a></li>
+                <li><a href="index.html#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Movie Detail Section -->
+    <section class="movie-detail-section">
+        <div class="container">
+            <a href="movies.html" class="back-btn">← Back to Movies</a>
+            <div id="movie-detail-content"></div>
+        </div>
+    </section>
+
+    <!-- Comment Section -->
+    <section class="comment-section">
+        <div class="container">
+            <h2 class="comment-title">💬 Comments</h2>
+            <div class="comment-form-container">
+                <form id="comment-form" class="comment-form">
+                    <div class="form-group">
+                        <label for="comment-name">Your Name</label>
+                        <input type="text" id="comment-name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment-text">Your Comment</label>
+                        <textarea id="comment-text" rows="4" placeholder="Share your thoughts about this movie..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Post Comment</button>
+                </form>
+            </div>
+            <div id="comments-container" class="comments-container"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="about" class="footer">
+        <div class="container">
+            <p>&copy; 2026 MovieLearn. Learn, Explore, and Enjoy Movies.</p>
+        </div>
+    </footer>
+
+    <script src="movie-detail.js"></script>
+</body>
+</html>
