@@ -786,51 +786,340 @@ body {
     font-size: 1.1rem;
 }
 
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background: #e50914;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Comments on movie cards */
+.card-comments-preview {
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #2a2a2a;
+}
+
+.comments-count {
+    color: #e50914;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.latest-comment {
+    color: #888;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    font-style: italic;
+}
+
+.no-comments {
+    color: #666;
+    font-size: 0.85rem;
+}
+
 /* Responsive */
+@media (max-width: 1024px) {
+    .movies-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .movie-poster {
+        height: 350px;
+    }
+}
+
 @media (max-width: 768px) {
+    /* Navigation */
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 3rem 0;
+        transition: right 0.3s ease;
+        gap: 2rem;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links a {
+        font-size: 1.3rem;
+    }
+    
+    /* Hero Section */
     .hero-title {
         font-size: 2rem;
+        padding: 0 1rem;
     }
 
     .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .btn {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
     }
 
     .movies-hero-title {
         font-size: 2.5rem;
+        padding: 0 1rem;
     }
 
     .movies-hero-subtitle {
         font-size: 1.2rem;
+        padding: 0 1rem;
     }
-
-    .nav-links {
-        gap: 1rem;
-    }
-
+    
+    /* Movies Grid */
     .movies-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.2rem;
     }
-
+    
+    .movie-poster {
+        height: 300px;
+    }
+    
+    .movie-info {
+        padding: 1rem;
+    }
+    
+    .movie-title {
+        font-size: 1.1rem;
+    }
+    
+    .movie-description {
+        font-size: 0.85rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    
+    .star {
+        font-size: 1.3rem;
+    }
+    
+    /* Category Tabs */
+    .category-tabs {
+        gap: 0.5rem;
+    }
+    
+    .tab-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Modal */
+    .modal {
+        padding: 1rem;
+    }
+    
     .modal-content {
         padding: 1.5rem;
+        max-height: 95vh;
     }
-
+    
+    .modal-body h2 {
+        font-size: 1.5rem;
+    }
+    
+    .modal-body .detail-row {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    
+    .modal-body .detail-label {
+        min-width: auto;
+    }
+    
+    /* Floating movies */
     .floating-movie {
-        width: 80px;
-        height: 120px;
+        width: 60px;
+        height: 90px;
     }
 
+    /* Movie Detail Page */
     .movie-detail-header {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
     .movie-detail-poster {
-        max-width: 300px;
+        max-width: 100%;
         margin: 0 auto;
+        display: block;
     }
 
     .movie-detail-info h1 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    
+    .movie-detail-meta {
+        justify-content: center;
+    }
+    
+    .movie-detail-description {
+        font-size: 1rem;
+    }
+    
+    .section-title {
         font-size: 2rem;
+    }
+    
+    .comment-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.6rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .movies-hero-title {
+        font-size: 1.8rem;
+    }
+
+    .movies-hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .movies-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .movie-poster {
+        height: 350px;
+    }
+    
+    .movie-title {
+        font-size: 1.2rem;
+    }
+    
+    .movie-description {
+        font-size: 0.9rem;
+        -webkit-line-clamp: 3;
+    }
+    
+    .category-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .modal-content {
+        padding: 1rem;
+    }
+    
+    .modal-body h2 {
+        font-size: 1.3rem;
+    }
+    
+    .btn-preview {
+        width: 100%;
+        padding: 0.8rem;
+    }
+    
+    .movie-detail-meta {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .movie-detail-meta span {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .comment-form input,
+    .comment-form textarea {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+    
+    .btn-submit {
+        width: 100%;
+        padding: 0.8rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    .star {
+        padding: 5px;
+    }
+    
+    .tab-btn {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .btn-preview,
+    .btn-submit,
+    .btn {
+        min-height: 44px;
+    }
+    
+    .nav-links a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
     }
 }
