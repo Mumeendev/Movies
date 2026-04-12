@@ -72,7 +72,7 @@ const movies = [
         title: "Jujutsu Kaisen",
         category: "Anime",
         year: 2020,
-        image: "https://image.tmdb.org/t/p/w500/wjQ6ZbqWJkZ5qMqLqLqLqLqLqL.jpg",
+        image: "https://image.tmdb.org/t/p/w500/zBWUTduKhTDggSvMgMJPaShRpBu.jpg",
         description: "A high school student joins a secret organization of sorcerers to fight powerful curses after swallowing a cursed finger.",
         themes: "Good vs Evil, Friendship, Sacrifice, Power",
         director: "Sunghoo Park",
@@ -84,7 +84,7 @@ const movies = [
         title: "Naruto",
         category: "Anime",
         year: 2002,
-        image: "https://image.tmdb.org/t/p/w500/x2MxHqLqLqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://image.tmdb.org/t/p/w500/uEQYkz3MkBLJWqM4kKhBhjKTU.jpg",
         description: "A young ninja with a sealed demon fox inside him dreams of becoming the strongest leader of his village.",
         themes: "Perseverance, Friendship, Destiny, Redemption",
         director: "Hayato Date",
@@ -96,7 +96,7 @@ const movies = [
         title: "Attack on Titan",
         category: "Anime",
         year: 2013,
-        image: "https://image.tmdb.org/t/p/w500/hTP1DtLGF1FqYs8qLqLqLqLqLqL.jpg",
+        image: "https://image.tmdb.org/t/p/w500/8qBylBsQW4llkPCLFhEjYB7XBFp.jpg",
         description: "Humanity lives inside cities surrounded by enormous walls as protection against gigantic man-eating humanoids.",
         themes: "Freedom, Survival, War, Truth",
         director: "Tetsuro Araki",
@@ -108,7 +108,7 @@ const movies = [
         title: "Demon Slayer",
         category: "Anime",
         year: 2019,
-        image: "https://image.tmdb.org/t/p/w500/wrCVHdkBlwwYNHqLqLqLqLqLqL.jpg",
+        image: "https://image.tmdb.org/t/p/w500/xUfRZu2mi8jH6S6SJGmTz1rTnIa.jpg",
         description: "A young boy becomes a demon slayer after his family is slaughtered and his sister is turned into a demon.",
         themes: "Family, Determination, Good vs Evil, Tragedy",
         director: "Haruo Sotozaki",
@@ -156,7 +156,7 @@ const movies = [
         title: "Tokyo Ghoul",
         category: "Anime",
         year: 2014,
-        image: "https://image.tmdb.org/t/p/w500/4q1aSJkQDBNJsaPqGqLqLqLqLqL.jpg",
+        image: "https://image.tmdb.org/t/p/w500/gpBPLHqg7Y4YJLdMlZzqLqLqLqL.jpg",
         description: "A college student becomes a half-ghoul after a deadly encounter and must navigate two worlds.",
         themes: "Identity, Survival, Humanity, Discrimination, Tragedy",
         director: "Shuhei Morita",
@@ -193,7 +193,7 @@ const movies = [
         title: "Hunter x Hunter",
         category: "Anime",
         year: 2011,
-        image: "https://image.tmdb.org/t/p/w500/ySJu1i8O0pMjLbKqLqLqLqLqLqL.jpg",
+        image: "https://image.tmdb.org/t/p/w500/zArviV5XOVGgEaFyIazKqMkKzOZ.jpg",
         description: "A young boy embarks on a journey to become a Hunter and find his father who abandoned him.",
         themes: "Adventure, Friendship, Growth, Morality",
         director: "Hiroshi Koujina",
@@ -1762,8 +1762,10 @@ function createMovieCard(movie) {
     });
     
     // Get comments for this movie
-    const comments = JSON.parse(localStorage.getItem(`comments_${movie.id}`)) || [];
-    const commentsPreview = comments.length > 0 
+    const comments = typeof sharedComments !== 'undefined'
+        ? sharedComments.getComments(movie.id)
+        : JSON.parse(localStorage.getItem(`comments_${movie.id}`)) || [];
+    const commentsPreview = comments.length > 0
         ? `<div class="card-comments-preview">
             <span class="comments-count">💬 ${comments.length} comment${comments.length > 1 ? 's' : ''}</span>
             <p class="latest-comment">"${comments[0].text.substring(0, 60)}${comments[0].text.length > 60 ? '...' : ''}"</p>
@@ -1774,7 +1776,7 @@ function createMovieCard(movie) {
     
     card.innerHTML = `
         <div class="movie-poster">
-            <img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='${movie.title.charAt(0)}';">
+            <img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;" onerror="handleMovieImageError(this, '${movie.title.replace(/'/g, "\\'")}')">
         </div>
         <div class="movie-info">
             <h3 class="movie-title">${movie.title}</h3>
@@ -1879,23 +1881,149 @@ function setupEventListeners() {
             window.location.href = `movie-detail.html?id=${movieId}`;
         }
     });
-    
+
     // Close modal
     closeModal.addEventListener('click', () => {
         modal.classList.remove('active');
     });
-    
+
     // Close modal on outside click
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.classList.remove('active');
         }
     });
-    
+
     // Escape key closes modal
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
             modal.classList.remove('active');
         }
     });
+
+    // Initialize search
+    initializeSearch();
 }
+
+// ==================== SEARCH FUNCTIONALITY ====================
+function initializeSearch() {
+    const searchInput = document.getElementById('nav-search');
+    const searchResults = document.getElementById('search-results');
+    
+    if (!searchInput || !searchResults) return;
+
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim().toLowerCase();
+        
+        if (query.length < 2) {
+            searchResults.classList.remove('active');
+            searchResults.innerHTML = '';
+            return;
+        }
+
+        const results = searchMovies(query);
+        displaySearchResults(results, query);
+    });
+
+    searchInput.addEventListener('focus', () => {
+        const query = searchInput.value.trim().toLowerCase();
+        if (query.length >= 2) {
+            const results = searchMovies(query);
+            displaySearchResults(results, query);
+        }
+    });
+
+    // Close search results when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-container')) {
+            searchResults.classList.remove('active');
+        }
+    });
+
+    // Keyboard navigation
+    searchInput.addEventListener('keydown', (e) => {
+        const items = searchResults.querySelectorAll('.search-result-item');
+        const activeItem = searchResults.querySelector('.search-result-item:hover');
+        const currentIndex = Array.from(items).indexOf(activeItem);
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const nextIndex = (currentIndex + 1) % items.length;
+            items[nextIndex]?.focus();
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prevIndex = (currentIndex - 1 + items.length) % items.length;
+            items[prevIndex]?.focus();
+        } else if (e.key === 'Enter' && activeItem) {
+            e.preventDefault();
+            activeItem.click();
+        } else if (e.key === 'Escape') {
+            searchResults.classList.remove('active');
+            searchInput.blur();
+        }
+    });
+}
+
+function searchMovies(query) {
+    return movies.filter(movie => {
+        const searchableText = [
+            movie.title,
+            movie.category,
+            movie.director,
+            movie.themes,
+            movie.description,
+            movie.year.toString()
+        ].join(' ').toLowerCase();
+
+        return searchableText.includes(query);
+    }).slice(0, 8); // Limit to 8 results
+}
+
+function displaySearchResults(results, query) {
+    const searchResults = document.getElementById('search-results');
+    
+    if (results.length === 0) {
+        searchResults.innerHTML = `
+            <div class="search-no-results">
+                <span>🎬</span>
+                <p>No movies found matching "<strong>${escapeHtml(query)}</strong>"</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Try searching by title, category, director, or themes</p>
+            </div>
+        `;
+        searchResults.classList.add('active');
+        return;
+    }
+
+    searchResults.innerHTML = results.map(movie => `
+        <a href="movie-detail.html?id=${movie.id}" class="search-result-item">
+            <div class="search-result-poster">
+                <img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"
+                     onerror="handleMovieImageError(this, '${movie.title.replace(/'/g, "\\'")}')">
+            </div>
+            <div class="search-result-info">
+                <div class="search-result-title">${highlightText(movie.title, query)}</div>
+                <div class="search-result-meta">
+                    ${movie.category} • ${movie.year} • ${movie.director}
+                </div>
+            </div>
+        </a>
+    `).join('');
+
+    searchResults.classList.add('active');
+}
+
+function highlightText(text, query) {
+    const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+    return text.replace(regex, '<mark>$1</mark>');
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function escapeRegex(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+

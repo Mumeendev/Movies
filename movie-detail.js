@@ -257,16 +257,22 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'movies.html';
         return;
     }
-    
+
     const movie = moviesData.find(m => m.id === movieId);
     if (!movie) {
         window.location.href = 'movies.html';
         return;
     }
-    
+
     renderMovieDetail(movie);
     loadComments(movieId);
     setupEventListeners(movieId);
+    initializeSearch();
+    
+    // Listen for comment updates from other tabs
+    if (typeof sharedComments !== 'undefined') {
+        sharedComments.addListener(movieId, () => loadComments(movieId));
+    }
 });
 
 // Render Movie Detail
@@ -277,7 +283,7 @@ function renderMovieDetail(movie) {
     
     movieDetailContent.innerHTML = `
         <div class="movie-detail-header">
-            <img src="${movie.image}" alt="${movie.title}" class="movie-detail-poster" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 400%22><rect fill=%22%231a1a1a%22 width=%22300%22 height=%22400%22/><text x=%2250%%22 y=%2250%%22 fill=%22%23666%22 text-anchor=%22middle%22 font-size=%2240%22>🎬</text></svg>'">
+            <img src="${movie.image}" alt="${movie.title}" class="movie-detail-poster" onerror="handleMovieImageError(this, '${movie.title.replace(/'/g, "\\'")}')">
             <div class="movie-detail-info">
                 <h1>${movie.title}</h1>
                 <div class="movie-detail-meta">
@@ -349,35 +355,115 @@ function loadRatings() {
 
 // Load Comments
 function loadComments(movieId) {
-    const comments = JSON.parse(localStorage.getItem(`comments_${movieId}`)) || [];
-    
+    const comments = typeof sharedComments !== 'undefined' 
+        ? sharedComments.getComments(movieId) 
+        : JSON.parse(localStorage.getItem(`comments_${movieId}`)) || [];
+
     if (comments.length === 0) {
-        commentsContainer.innerHTML = '<p class="no-comments">No comments yet. Be the first to share your thoughts!</p>';
+        commentsContainer.innerHTML = `
+            <div class="no-comments">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">💬</div>
+                <p>No comments yet. Be the first to share your thoughts!</p>
+            </div>
+        `;
         return;
     }
-    
-    commentsContainer.innerHTML = comments.map(comment => `
-        <div class="comment-card">
-            <div class="comment-header">
-                <span class="comment-author">${comment.name}</span>
-                <span class="comment-date">${comment.date}</span>
-            </div>
-            <p class="comment-text">${comment.text}</p>
+
+    const currentUserId = typeof sharedComments !== 'undefined' 
+        ? sharedComments.getUserId() 
+        : '';
+
+    commentsContainer.innerHTML = `
+        <div class="comments-header">
+            <h3>💬 ${comments.length} Comment${comments.length !== 1 ? 's' : ''}</h3>
         </div>
-    `).join('');
+        <div class="comments-list">
+            ${comments.map(comment => `
+                <div class="comment-card ${comment.userId === currentUserId ? 'own-comment' : ''}">
+                    <div class="comment-header">
+                        <div class="comment-author-info">
+                            <span class="comment-author">${typeof sharedComments !== 'undefined' ? sharedComments.escapeHtml(comment.name) : escapeHtml(comment.name)}</span>
+                            ${comment.userId === currentUserId ? '<span class="own-comment-badge">You</span>' : ''}
+                        </div>
+                        <span class="comment-date">${comment.date}</span>
+                    </div>
+                    <p class="comment-text">${typeof sharedComments !== 'undefined' ? sharedComments.escapeHtml(comment.text) : escapeHtml(comment.text)}</p>
+                </div>
+            `).join('')}
+        </div>
+    `;
 }
 
 // Add Comment
 function addComment(movieId, name, text) {
-    const comments = JSON.parse(localStorage.getItem(`comments_${movieId}`)) || [];
-    const newComment = {
-        name: name,
-        text: text,
-        date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
-    };
-    comments.unshift(newComment);
-    localStorage.setItem(`comments_${movieId}`, JSON.stringify(comments));
+    if (typeof sharedComments !== 'undefined') {
+        sharedComments.addComment(movieId, name, text);
+    } else {
+        const comments = JSON.parse(localStorage.getItem(`comments_${movieId}`)) || [];
+        const newComment = {
+            userId: '',
+            name: name,
+            text: text,
+            date: new Date().toLocaleString('en-US', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            })
+        };
+        comments.unshift(newComment);
+        localStorage.setItem(`comments_${movieId}`, JSON.stringify(comments));
+    }
+    
     loadComments(movieId);
+    showNotification('Comment posted successfully! 💬');
+}
+
+// Escape HTML to prevent XSS
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// Show notification
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'notification-toast';
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+    
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Handle image errors with better fallback
+function handleImageError(img, title) {
+    const colors = ['#e50914', '#b20710', '#1a1a1a', '#2a2a2a', '#333'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    const initial = title ? title.charAt(0).toUpperCase() : '🎬';
+    
+    img.onerror = null;
+    img.src = `data:image/svg+xml,${encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400">
+            <defs>
+                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:${randomColor};stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <rect width="300" height="400" fill="url(#grad)"/>
+            <text x="50%" y="45%" fill="#fff" text-anchor="middle" font-size="80" font-family="Arial">${initial}</text>
+            <text x="50%" y="65%" fill="#ccc" text-anchor="middle" font-size="16" font-family="Arial">${title || 'Movie'}</text>
+        </svg>
+    `)}`;
 }
 
 // Setup Event Listeners
@@ -386,12 +472,126 @@ function setupEventListeners(movieId) {
         e.preventDefault();
         const name = document.getElementById('comment-name').value.trim();
         const text = document.getElementById('comment-text').value.trim();
-        
+
         if (name && text) {
             addComment(movieId, name, text);
             commentForm.reset();
         }
     });
+}
+
+// ==================== SEARCH FUNCTIONALITY ====================
+function initializeSearch() {
+    const searchInput = document.getElementById('nav-search');
+    const searchResults = document.getElementById('search-results');
+    
+    if (!searchInput || !searchResults) return;
+
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim().toLowerCase();
+        
+        if (query.length < 2) {
+            searchResults.classList.remove('active');
+            searchResults.innerHTML = '';
+            return;
+        }
+
+        const results = searchMovies(query);
+        displaySearchResults(results, query);
+    });
+
+    searchInput.addEventListener('focus', () => {
+        const query = searchInput.value.trim().toLowerCase();
+        if (query.length >= 2) {
+            const results = searchMovies(query);
+            displaySearchResults(results, query);
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-container')) {
+            searchResults.classList.remove('active');
+        }
+    });
+
+    searchInput.addEventListener('keydown', (e) => {
+        const items = searchResults.querySelectorAll('.search-result-item');
+        const activeItem = searchResults.querySelector('.search-result-item:hover');
+        const currentIndex = Array.from(items).indexOf(activeItem);
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const nextIndex = (currentIndex + 1) % items.length;
+            items[nextIndex]?.focus();
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prevIndex = (currentIndex - 1 + items.length) % items.length;
+            items[prevIndex]?.focus();
+        } else if (e.key === 'Enter' && activeItem) {
+            e.preventDefault();
+            activeItem.click();
+        } else if (e.key === 'Escape') {
+            searchResults.classList.remove('active');
+            searchInput.blur();
+        }
+    });
+}
+
+function searchMovies(query) {
+    return moviesData.filter(movie => {
+        const searchableText = [
+            movie.title,
+            movie.category,
+            movie.director,
+            movie.themes,
+            movie.description,
+            movie.year.toString()
+        ].join(' ').toLowerCase();
+
+        return searchableText.includes(query);
+    }).slice(0, 8);
+}
+
+function displaySearchResults(results, query) {
+    const searchResults = document.getElementById('search-results');
+    
+    if (results.length === 0) {
+        searchResults.innerHTML = `
+            <div class="search-no-results">
+                <span>🎬</span>
+                <p>No movies found matching "<strong>${escapeHtml(query)}</strong>"</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Try searching by title, category, director, or themes</p>
+            </div>
+        `;
+        searchResults.classList.add('active');
+        return;
+    }
+
+    searchResults.innerHTML = results.map(movie => `
+        <a href="movie-detail.html?id=${movie.id}" class="search-result-item">
+            <div class="search-result-poster">
+                <img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"
+                     onerror="handleMovieImageError(this, '${movie.title.replace(/'/g, "\\'")}')">
+            </div>
+            <div class="search-result-info">
+                <div class="search-result-title">${highlightText(movie.title, query)}</div>
+                <div class="search-result-meta">
+                    ${movie.category} • ${movie.year} • ${movie.director}
+                </div>
+            </div>
+        </a>
+    `).join('');
+
+    searchResults.classList.add('active');
+}
+
+function highlightText(text, query) {
+    const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+    return text.replace(regex, '<mark>$1</mark>');
+}
+
+function escapeRegex(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 // Load ratings on init

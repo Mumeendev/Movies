@@ -394,19 +394,19 @@ function setupEventListeners() {
             showMoviePreview(movieId);
         }
     });
-    
+
     // Close modal
     closeModal.addEventListener('click', () => {
         modal.classList.remove('active');
     });
-    
+
     // Close modal on outside click
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.classList.remove('active');
         }
     });
-    
+
     // Smooth scroll for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -417,11 +417,133 @@ function setupEventListeners() {
             }
         });
     });
-    
+
     // Escape key closes modal
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
             modal.classList.remove('active');
         }
     });
+
+    // Initialize search
+    initializeSearch();
+}
+
+// ==================== SEARCH FUNCTIONALITY ====================
+function initializeSearch() {
+    const searchInput = document.getElementById('nav-search');
+    const searchResults = document.getElementById('search-results');
+    
+    if (!searchInput || !searchResults) return;
+
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim().toLowerCase();
+        
+        if (query.length < 2) {
+            searchResults.classList.remove('active');
+            searchResults.innerHTML = '';
+            return;
+        }
+
+        const results = searchMovies(query);
+        displaySearchResults(results, query);
+    });
+
+    searchInput.addEventListener('focus', () => {
+        const query = searchInput.value.trim().toLowerCase();
+        if (query.length >= 2) {
+            const results = searchMovies(query);
+            displaySearchResults(results, query);
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-container')) {
+            searchResults.classList.remove('active');
+        }
+    });
+
+    searchInput.addEventListener('keydown', (e) => {
+        const items = searchResults.querySelectorAll('.search-result-item');
+        const activeItem = searchResults.querySelector('.search-result-item:hover');
+        const currentIndex = Array.from(items).indexOf(activeItem);
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const nextIndex = (currentIndex + 1) % items.length;
+            items[nextIndex]?.focus();
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prevIndex = (currentIndex - 1 + items.length) % items.length;
+            items[prevIndex]?.focus();
+        } else if (e.key === 'Enter' && activeItem) {
+            e.preventDefault();
+            activeItem.click();
+        } else if (e.key === 'Escape') {
+            searchResults.classList.remove('active');
+            searchInput.blur();
+        }
+    });
+}
+
+function searchMovies(query) {
+    return movies.filter(movie => {
+        const searchableText = [
+            movie.title,
+            movie.category,
+            movie.director,
+            movie.themes,
+            movie.description,
+            movie.year.toString()
+        ].join(' ').toLowerCase();
+
+        return searchableText.includes(query);
+    }).slice(0, 8);
+}
+
+function displaySearchResults(results, query) {
+    const searchResults = document.getElementById('search-results');
+    
+    if (results.length === 0) {
+        searchResults.innerHTML = `
+            <div class="search-no-results">
+                <span>🎬</span>
+                <p>No movies found matching "<strong>${escapeHtml(query)}</strong>"</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Try searching by title, category, director, or themes</p>
+            </div>
+        `;
+        searchResults.classList.add('active');
+        return;
+    }
+
+    searchResults.innerHTML = results.map(movie => `
+        <a href="movie-detail.html?id=${movie.id}" class="search-result-item">
+            <div class="search-result-poster">
+                ${movie.emoji || '🎬'}
+            </div>
+            <div class="search-result-info">
+                <div class="search-result-title">${highlightText(movie.title, query)}</div>
+                <div class="search-result-meta">
+                    ${movie.category} • ${movie.year} • ${movie.director}
+                </div>
+            </div>
+        </a>
+    `).join('');
+
+    searchResults.classList.add('active');
+}
+
+function highlightText(text, query) {
+    const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+    return text.replace(regex, '<mark>$1</mark>');
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function escapeRegex(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
