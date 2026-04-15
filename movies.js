@@ -36,7 +36,7 @@ const movies = [
         title: "Your Name",
         category: "Anime",
         year: 2016,
-        image: "https://image.tmdb.org/t/p/w500/1TDV5ILRBDBLWwBwBhL3fYcYhKk.jpg",
+        image: "https://image.tmdb.org/t/p/w500/q719jXXEzOoYaps6babgKnONONX.jpg",
         description: "Two teenagers discover they are swapping bodies and develop a connection that transcends time and space.",
         themes: "Love, Fate, Time, Connection",
         director: "Makoto Shinkai",
@@ -48,7 +48,7 @@ const movies = [
         title: "Princess Mononoke",
         category: "Anime",
         year: 1997,
-        image: "https://image.tmdb.org/t/p/w500/jHWmNrTm544HK0dG3vYkI6aKjLq.jpg",
+        image: "https://image.tmdb.org/t/p/w500/cMYCDADoLKLbB83g4WnJegaZimC.jpg",
         description: "A prince becomes involved in the struggle between forest gods and humans consuming nature's resources.",
         themes: "Nature vs Industry, War, Morality, Balance",
         director: "Hayao Miyazaki",
@@ -60,7 +60,7 @@ const movies = [
         title: "Akira",
         category: "Anime",
         year: 1988,
-        image: "https://image.tmdb.org/t/p/w500/neZ0ykEsP8eAbcwDCPPF3fjVpOm.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/300/751059.jpg",
         description: "In a dystopian Neo-Tokyo, a biker gang member gains telekinetic powers that threaten the city.",
         themes: "Power, Corruption, Friendship, Dystopia",
         director: "Katsuhiro Otomo",
@@ -72,7 +72,7 @@ const movies = [
         title: "Jujutsu Kaisen",
         category: "Anime",
         year: 2020,
-        image: "https://image.tmdb.org/t/p/w500/zBWUTduKhTDggSvMgMJPaShRpBu.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/608/1521905.jpg",
         description: "A high school student joins a secret organization of sorcerers to fight powerful curses after swallowing a cursed finger.",
         themes: "Good vs Evil, Friendship, Sacrifice, Power",
         director: "Sunghoo Park",
@@ -84,7 +84,7 @@ const movies = [
         title: "Naruto",
         category: "Anime",
         year: 2002,
-        image: "https://image.tmdb.org/t/p/w500/uEQYkz3MkBLJWqM4kKhBhjKTU.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/3/9744.jpg",
         description: "A young ninja with a sealed demon fox inside him dreams of becoming the strongest leader of his village.",
         themes: "Perseverance, Friendship, Destiny, Redemption",
         director: "Hayato Date",
@@ -96,7 +96,7 @@ const movies = [
         title: "Attack on Titan",
         category: "Anime",
         year: 2013,
-        image: "https://image.tmdb.org/t/p/w500/8qBylBsQW4llkPCLFhEjYB7XBFp.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/476/1191684.jpg",
         description: "Humanity lives inside cities surrounded by enormous walls as protection against gigantic man-eating humanoids.",
         themes: "Freedom, Survival, War, Truth",
         director: "Tetsuro Araki",
@@ -108,7 +108,7 @@ const movies = [
         title: "Demon Slayer",
         category: "Anime",
         year: 2019,
-        image: "https://image.tmdb.org/t/p/w500/xUfRZu2mi8jH6S6SJGmTz1rTnIa.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/456/1140750.jpg",
         description: "A young boy becomes a demon slayer after his family is slaughtered and his sister is turned into a demon.",
         themes: "Family, Determination, Good vs Evil, Tragedy",
         director: "Haruo Sotozaki",
@@ -120,7 +120,7 @@ const movies = [
         title: "Fullmetal Alchemist: Brotherhood",
         category: "Anime",
         year: 2009,
-        image: "https://image.tmdb.org/t/p/w500/5ZFUEOULaVml7pQuXxhp4hWVjML.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/485/1214095.jpg",
         description: "Two brothers search for the Philosopher's Stone to restore their bodies after a failed alchemical ritual.",
         themes: "Sacrifice, Brotherhood, Equivalent Exchange, War, Humanity",
         director: "Yasuhiro Irie",
@@ -132,7 +132,7 @@ const movies = [
         title: "Death Note",
         category: "Anime",
         year: 2006,
-        image: "https://image.tmdb.org/t/p/w500/AiYpYMjVpNOJk7MnVfMaFQmJmjm.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/499/1249019.jpg",
         description: "A high school student discovers a supernatural notebook that kills anyone whose name is written in it.",
         themes: "Justice, Morality, Power, Corruption, Intellect",
         director: "Tetsuro Araki",
@@ -144,7 +144,7 @@ const movies = [
         title: "One Punch Man",
         category: "Anime",
         year: 2015,
-        image: "https://image.tmdb.org/t/p/w500/iE3sDvqPMqGqILsMnJ7qHqPqPqP.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/598/1496471.jpg",
         description: "A superhero who can defeat any opponent with a single punch searches for a worthy challenge.",
         themes: "Heroism, Boredom, Identity, Satire, Power",
         director: "Shingo Natsume",
@@ -156,7 +156,7 @@ const movies = [
         title: "Tokyo Ghoul",
         category: "Anime",
         year: 2014,
-        image: "https://image.tmdb.org/t/p/w500/gpBPLHqg7Y4YJLdMlZzqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/604/1510953.jpg",
         description: "A college student becomes a half-ghoul after a deadly encounter and must navigate two worlds.",
         themes: "Identity, Survival, Humanity, Discrimination, Tragedy",
         director: "Shuhei Morita",
@@ -169,7 +169,7 @@ const movies = [
         title: "My Hero Academia",
         category: "Anime",
         year: 2016,
-        image: "https://image.tmdb.org/t/p/w500/aUFj83kOkTFLCSAQQzCNwq3Kqkx.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/599/1499141.jpg",
         description: "A boy born without superpowers dreams of becoming the greatest hero in a world where abilities are the norm.",
         themes: "Heroism, Perseverance, Friendship, Legacy",
         director: "Kenji Nagasaki",
@@ -181,7 +181,7 @@ const movies = [
         title: "Sword Art Online",
         category: "Anime",
         year: 2012,
-        image: "https://image.tmdb.org/t/p/w500/jnJFMTJfHNhVxMmAJqvFZy7jEjT.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/573/1434479.jpg",
         description: "Players become trapped in a virtual reality MMORPG where death in the game means death in real life.",
         themes: "Virtual Reality, Survival, Love, Technology",
         director: "Tomohiko Ito",
@@ -193,7 +193,7 @@ const movies = [
         title: "Hunter x Hunter",
         category: "Anime",
         year: 2011,
-        image: "https://image.tmdb.org/t/p/w500/zArviV5XOVGgEaFyIazKqMkKzOZ.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/223/559165.jpg",
         description: "A young boy embarks on a journey to become a Hunter and find his father who abandoned him.",
         themes: "Adventure, Friendship, Growth, Morality",
         director: "Hiroshi Koujina",
@@ -205,7 +205,7 @@ const movies = [
         title: "Cowboy Bebop",
         category: "Anime",
         year: 1998,
-        image: "https://image.tmdb.org/t/p/w500/xZbKqLqLqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/178/446548.jpg",
         description: "A group of bounty hunters travel through space in their ship, hunting criminals while confronting their pasts.",
         themes: "Loneliness, Jazz, Redemption, Found Family, Existentialism",
         director: "Shinichiro Watanabe",
@@ -217,7 +217,7 @@ const movies = [
         title: "Steins;Gate",
         category: "Anime",
         year: 2011,
-        image: "https://image.tmdb.org/t/p/w500/qJqLqLqLqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/373/933178.jpg",
         description: "A group of friends accidentally discover time travel and must deal with the consequences of altering the past.",
         themes: "Time Travel, Consequences, Science, Friendship, Sacrifice",
         director: "Hiroshi Hamasaki",
@@ -229,7 +229,7 @@ const movies = [
         title: "Mob Psycho 100",
         category: "Anime",
         year: 2016,
-        image: "https://image.tmdb.org/t/p/w500/mPqLqLqLqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/508/1270187.jpg",
         description: "A powerful psychic middle schooler tries to live a normal life while dealing with supernatural threats.",
         themes: "Self-Improvement, Power, Identity, Kindness, Growth",
         director: "Yuzuru Tachikawa",
@@ -241,7 +241,7 @@ const movies = [
         title: "Neon Genesis Evangelion",
         category: "Anime",
         year: 1995,
-        image: "https://image.tmdb.org/t/p/w500/nPqLqLqLqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/11/27792.jpg",
         description: "Teenagers pilot giant mechas to defend Earth from mysterious beings called Angels.",
         themes: "Depression, Identity, Human Connection, Religion, Trauma",
         director: "Hideaki Anno",
@@ -253,7 +253,7 @@ const movies = [
         title: "One Piece",
         category: "Anime",
         year: 1999,
-        image: "https://image.tmdb.org/t/p/w500/oPqLqLqLqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/504/1262497.jpg",
         description: "A young pirate and his crew sail the Grand Line in search of the ultimate treasure, the One Piece.",
         themes: "Adventure, Freedom, Friendship, Dreams, Justice",
         director: "Eiichiro Oda",
@@ -265,7 +265,7 @@ const movies = [
         title: "Violet Evergarden",
         category: "Anime",
         year: 2018,
-        image: "https://image.tmdb.org/t/p/w500/vPqLqLqLqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/504/1261954.jpg",
         description: "A former child soldier becomes a letter writer to understand the meaning of the words 'I love you.'",
         themes: "Love, Healing, War, Communication, Humanity",
         director: "Taichi Ishidate",
@@ -277,7 +277,7 @@ const movies = [
         title: "Chainsaw Man",
         category: "Anime",
         year: 2022,
-        image: "https://image.tmdb.org/t/p/w500/cPqLqLqLqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/422/1056726.jpg",
         description: "A young man merges with a chainsaw devil and joins a government agency to hunt other devils.",
         themes: "Survival, Desire, Violence, Found Family, Humanity",
         director: "Ryu Nakayama",
@@ -290,7 +290,7 @@ const movies = [
         title: "Crash Landing on You",
         category: "Kdrama",
         year: 2019,
-        image: "https://image.tmdb.org/t/p/w500/tD8WjMgFYdXbqTjKHVjBwJpXGfE.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/235/588087.jpg",
         description: "A South Korean heiress accidentally paraglides into North Korea and falls in love with an army officer.",
         themes: "Love, Division, Loyalty, Cultural Differences",
         director: "Lee Jung-hyo",
@@ -302,7 +302,7 @@ const movies = [
         title: "Goblin: The Lonely and Great God",
         category: "Kdrama",
         year: 2016,
-        image: "https://image.tmdb.org/t/p/w500/3JkSF5Y4rV8gXqCJbqLqJqLqLqJ.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/532/1330901.jpg",
         description: "An immortal goblin seeks to end his cursed life by finding his destined bride, the Goblin's Bride.",
         themes: "Fate, Immortality, Sacrifice, Destiny",
         director: "Lee Eung-bok",
@@ -314,7 +314,7 @@ const movies = [
         title: "Descendants of the Sun",
         category: "Kdrama",
         year: 2016,
-        image: "https://image.tmdb.org/t/p/w500/rXhFdKbJYqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/46/115575.jpg",
         description: "A love story between a soldier and a doctor unfolds against the backdrop of war-torn nations.",
         themes: "Duty, Love, Heroism, Sacrifice",
         director: "Lee Eung-bok",
@@ -326,7 +326,7 @@ const movies = [
         title: "Itaewon Class",
         category: "Kdrama",
         year: 2020,
-        image: "https://image.tmdb.org/t/p/w500/sKqLqLqLqLqLqLqLqLqLqLqLqLq.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/236/591651.jpg",
         description: "An ex-convict opens a bar-restaurant to seek revenge on the food company that destroyed his family.",
         themes: "Revenge, Ambition, Justice, Entrepreneurship",
         director: "Kim Sung-yoon",
@@ -338,7 +338,7 @@ const movies = [
         title: "Squid Game",
         category: "Kdrama",
         year: 2021,
-        image: "https://image.tmdb.org/t/p/w500/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/576/1440521.jpg",
         description: "Hundreds of cash-strapped players accept a strange invitation to compete in children's games for a tempting prize.",
         themes: "Survival, Inequality, Human Nature, Desperation, Morality",
         director: "Hwang Dong-hyuk",
@@ -350,7 +350,7 @@ const movies = [
         title: "Hospital Playlist",
         category: "Kdrama",
         year: 2020,
-        image: "https://image.tmdb.org/t/p/w500/hPqLqLqLqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/323/807792.jpg",
         description: "Five doctors who have been friends since medical school navigate life, love, and music together.",
         themes: "Friendship, Medicine, Music, Life, Community",
         director: "Shin Won-ho",
@@ -362,7 +362,7 @@ const movies = [
         title: "Reply 1988",
         category: "Kdrama",
         year: 2015,
-        image: "https://image.tmdb.org/t/p/w500/rPqLqLqLqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/27/67574.jpg",
         description: "Five childhood friends growing up in a Seoul neighborhood in 1988 navigate family, love, and growing up.",
         themes: "Nostalgia, Family, Friendship, Youth, Community",
         director: "Shin Won-ho",
@@ -374,7 +374,7 @@ const movies = [
         title: "Vincenzo",
         category: "Kdrama",
         year: 2021,
-        image: "https://image.tmdb.org/t/p/w500/vPqLqLqLqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/481/1202670.jpg",
         description: "An Italian-Korean mafia lawyer returns to Korea and uses unconventional methods to fight corporate evil.",
         themes: "Justice, Revenge, Morality, Found Family, Antihero",
         director: "Kim Hee-won",
@@ -386,7 +386,7 @@ const movies = [
         title: "It's Okay to Not Be Okay",
         category: "Kdrama",
         year: 2020,
-        image: "https://image.tmdb.org/t/p/w500/iKqLqLqLqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/260/651608.jpg",
         description: "A psychiatric ward caretaker and an antisocial children's book author heal each other's emotional wounds.",
         themes: "Mental Health, Healing, Trauma, Love, Family",
         director: "Park Shin-woo",
@@ -398,7 +398,7 @@ const movies = [
         title: "My Love from the Star",
         category: "Kdrama",
         year: 2013,
-        image: "https://image.tmdb.org/t/p/w500/mLqLqLqLqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/18/47470.jpg",
         description: "An alien who landed on Earth 400 years ago falls in love with a top actress in the modern day.",
         themes: "Love, Time, Fate, Destiny, Supernatural",
         director: "Jang Tae-yoo",
@@ -410,7 +410,7 @@ const movies = [
         title: "Alchemy of Souls",
         category: "Kdrama",
         year: 2022,
-        image: "https://image.tmdb.org/t/p/w500/aOqLqLqLqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/609/1523773.jpg",
         description: "A powerful sorceress trapped in a blind woman's body becomes entangled with a young magician from a prestigious family.",
         themes: "Magic, Identity, Love, Power, Destiny",
         director: "Park Joon-hwa",
@@ -422,7 +422,7 @@ const movies = [
         title: "Hometown Cha-Cha-Cha",
         category: "Kdrama",
         year: 2021,
-        image: "https://image.tmdb.org/t/p/w500/hOqLqLqLqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/609/1523777.jpg",
         description: "A dentist moves to a seaside village and clashes with a handy jack-of-all-trades who helps everyone.",
         themes: "Community, Healing, Romance, Small Town, Happiness",
         director: "Yoo Je-won",
@@ -471,7 +471,7 @@ const movies = [
         title: "Lionheart",
         category: "Nollywood",
         year: 2018,
-        image: "https://image.tmdb.org/t/p/w500/lH8LqLqLqLqLqLqLqLqLqLqLqLq.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/481/1204395.jpg",
         description: "A woman takes over her father's transport company and fights to prove herself in a male-dominated industry.",
         themes: "Leadership, Gender Equality, Family Business, Tradition",
         director: "Genevieve Nnaji",
@@ -483,7 +483,7 @@ const movies = [
         title: "King of Boys",
         category: "Nollywood",
         year: 2018,
-        image: "https://image.tmdb.org/t/p/w500/kB8LqLqLqLqLqLqLqLqLqLqLqLq.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/352/880119.jpg",
         description: "A businesswoman and politician becomes entangled in a dangerous power struggle with a young soldier.",
         themes: "Power, Politics, Ambition, Survival",
         director: "Kemi Adetiba",
@@ -1729,12 +1729,25 @@ function filterByCategory(category) {
 
 // Render Movies
 function renderMovies() {
-    const filteredMovies = currentCategory === 'All' 
-        ? movies 
-        : movies.filter(movie => movie.category === currentCategory);
+    // Use TVMaze shows if available, otherwise use local movies
+    const moviesToRender = window.allMovies || movies;
     
+    const filteredMovies = currentCategory === 'All'
+        ? moviesToRender
+        : moviesToRender.filter(movie => movie.category === currentCategory);
+
     moviesGrid.innerHTML = '';
-    
+
+    if (filteredMovies.length === 0) {
+        moviesGrid.innerHTML = `
+            <div class="loading-tvmaze">
+                <p>No movies in this category yet.</p>
+                <p class="error-hint">Try "All" to see TVMaze shows</p>
+            </div>
+        `;
+        return;
+    }
+
     filteredMovies.forEach(movie => {
         const movieCard = createMovieCard(movie);
         moviesGrid.appendChild(movieCard);
@@ -1746,13 +1759,19 @@ function createMovieCard(movie) {
     const card = document.createElement('div');
     card.className = 'movie-card';
     card.style.cursor = 'pointer';
-    card.addEventListener('click', () => {
-        window.location.href = `movie-detail.html?id=${movie.id}`;
-    });
     
+    // Click handler - open TVMaze page or local detail
+    card.addEventListener('click', () => {
+        if (movie.isFromTVMaze && movie.url) {
+            window.open(movie.url, '_blank');
+        } else {
+            window.location.href = `movie-detail.html?id=${movie.id}`;
+        }
+    });
+
     const stars = [1, 2, 3, 4, 5].map(num => {
         const star = document.createElement('span');
-        star.className = 'star' + (num <= movie.rating ? ' active' : '');
+        star.className = 'star' + (num <= (movie.rating || 0) ? ' active' : '');
         star.innerHTML = '★';
         star.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -1760,7 +1779,11 @@ function createMovieCard(movie) {
         });
         return star;
     });
-    
+
+    // TVMaze badge
+    const tvmazeBadge = movie.isFromTVMaze ? 
+        '<span class="tvmaze-source-badge">TVMaze</span>' : '';
+
     // Get comments for this movie
     const comments = typeof sharedComments !== 'undefined'
         ? sharedComments.getComments(movie.id)
@@ -1773,10 +1796,19 @@ function createMovieCard(movie) {
         : `<div class="card-comments-preview no-comments">
             <span class="comments-count">💬 No comments yet</span>
           </div>`;
-    
+
+    // Image HTML
+    const imageHtml = movie.image ?
+        `<img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;" onerror="handleMovieImageError(this, '${movie.title.replace(/'/g, "\\'")}')">` :
+        `<div class="poster-fallback-dynamic" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <div class="fallback-initial">${movie.title.charAt(0).toUpperCase()}</div>
+            <div class="fallback-title">${movie.title}</div>
+        </div>`;
+
     card.innerHTML = `
         <div class="movie-poster">
-            <img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;" onerror="handleMovieImageError(this, '${movie.title.replace(/'/g, "\\'")}')">
+            ${tvmazeBadge}
+            ${imageHtml}
         </div>
         <div class="movie-info">
             <h3 class="movie-title">${movie.title}</h3>
@@ -1792,10 +1824,12 @@ function createMovieCard(movie) {
                 <span class="rating-value">${movie.rating > 0 ? movie.rating + '/5' : 'Not rated'}</span>
             </div>
             ${commentsPreview}
-            <button class="btn-preview" data-id="${movie.id}">View Details & Comments</button>
+            <button class="btn-preview" data-id="${movie.id}">
+                ${movie.isFromTVMaze ? 'View on TVMaze ↗' : 'View Details & Comments'}
+            </button>
         </div>
     `;
-    
+
     return card;
 }
 
@@ -1909,27 +1943,35 @@ function setupEventListeners() {
 function initializeSearch() {
     const searchInput = document.getElementById('nav-search');
     const searchResults = document.getElementById('search-results');
-    
+
     if (!searchInput || !searchResults) return;
+
+    let searchTimeout = null;
 
     searchInput.addEventListener('input', (e) => {
         const query = e.target.value.trim().toLowerCase();
-        
+
         if (query.length < 2) {
             searchResults.classList.remove('active');
             searchResults.innerHTML = '';
             return;
         }
 
-        const results = searchMovies(query);
-        displaySearchResults(results, query);
+        // Clear previous timeout
+        if (searchTimeout) {
+            clearTimeout(searchTimeout);
+        }
+
+        // Debounce search to avoid too many API calls
+        searchTimeout = setTimeout(() => {
+            searchMoviesWithTVMaze(query);
+        }, 300);
     });
 
     searchInput.addEventListener('focus', () => {
         const query = searchInput.value.trim().toLowerCase();
         if (query.length >= 2) {
-            const results = searchMovies(query);
-            displaySearchResults(results, query);
+            searchMoviesWithTVMaze(query);
         }
     });
 
@@ -1964,7 +2006,31 @@ function initializeSearch() {
     });
 }
 
-function searchMovies(query) {
+async function searchMoviesWithTVMaze(query) {
+    const searchResults = document.getElementById('search-results');
+    
+    try {
+        // Show loading state
+        searchResults.innerHTML = `
+            <div class="search-loading">
+                <span>🔍</span>
+                <p>Searching...</p>
+            </div>
+        `;
+        searchResults.classList.add('active');
+
+        // Search with TVMaze API fallback
+        const results = await searchWithFallback(query, movies, 8);
+        displaySearchResults(results, query);
+    } catch (error) {
+        console.error('Search error:', error);
+        // Fallback to local search only
+        const localResults = searchMoviesLocal(query);
+        displaySearchResults(localResults, query);
+    }
+}
+
+function searchMoviesLocal(query) {
     return movies.filter(movie => {
         const searchableText = [
             movie.title,
@@ -1976,38 +2042,62 @@ function searchMovies(query) {
         ].join(' ').toLowerCase();
 
         return searchableText.includes(query);
-    }).slice(0, 8); // Limit to 8 results
+    }).slice(0, 8);
 }
 
 function displaySearchResults(results, query) {
     const searchResults = document.getElementById('search-results');
-    
+
     if (results.length === 0) {
         searchResults.innerHTML = `
             <div class="search-no-results">
                 <span>🎬</span>
                 <p>No movies found matching "<strong>${escapeHtml(query)}</strong>"</p>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Try searching by title, category, director, or themes</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Try searching by title, category, genre (e.g., "drama", "anime"), or themes</p>
             </div>
         `;
         searchResults.classList.add('active');
         return;
     }
 
-    searchResults.innerHTML = results.map(movie => `
-        <a href="movie-detail.html?id=${movie.id}" class="search-result-item">
-            <div class="search-result-poster">
-                <img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"
-                     onerror="handleMovieImageError(this, '${movie.title.replace(/'/g, "\\'")}')">
-            </div>
-            <div class="search-result-info">
-                <div class="search-result-title">${highlightText(movie.title, query)}</div>
-                <div class="search-result-meta">
-                    ${movie.category} • ${movie.year} • ${movie.director}
-                </div>
-            </div>
-        </a>
-    `).join('');
+    searchResults.innerHTML = results.map(movie => {
+        const matchBadge = movie.matchType ? 
+            `<span class="match-type-badge match-${movie.matchType}">${movie.matchType}</span>` : '';
+
+        if (movie.isFromTVMaze) {
+            // TVMaze result
+            return `
+                <a href="${movie.url}" target="_blank" class="search-result-item tvmaze-result match-${movie.matchType || 'direct'}">
+                    <div class="search-result-poster">
+                        <img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'search-poster-fallback\\'>${movie.title.charAt(0)}</div>'">
+                    </div>
+                    <div class="search-result-info">
+                        <div class="search-result-title">${highlightText(movie.title, query)} ${matchBadge}</div>
+                        <div class="search-result-meta">
+                            ${movie.category} • ${movie.year} • <span class="tvmaze-badge">TVMaze</span>
+                        </div>
+                    </div>
+                </a>
+            `;
+        } else {
+            // Local movie result
+            return `
+                <a href="movie-detail.html?id=${movie.id}" class="search-result-item match-${movie.matchType || 'direct'}">
+                    <div class="search-result-poster">
+                        <img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"
+                             onerror="handleMovieImageError(this, '${movie.title.replace(/'/g, "\\'")}')">
+                    </div>
+                    <div class="search-result-info">
+                        <div class="search-result-title">${highlightText(movie.title, query)} ${matchBadge}</div>
+                        <div class="search-result-meta">
+                            ${movie.category} • ${movie.year} • ${movie.director}
+                        </div>
+                    </div>
+                </a>
+            `;
+        }
+    }).join('');
 
     searchResults.classList.add('active');
 }

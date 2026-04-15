@@ -1,0 +1,187 @@
+{
+  "Spirited Away": {
+    "title": "Spirited Away",
+    "image": null
+  },
+  "Your Name": {
+    "title": "Your Name",
+    "image": null
+  },
+  "Princess Mononoke": {
+    "title": "Princess Mononoke",
+    "image": null
+  },
+  "Akira": {
+    "title": "Akira",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/300/751059.jpg",
+    "tvmazeId": 54205
+  },
+  "Jujutsu Kaisen": {
+    "title": "Jujutsu Kaisen",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/608/1521905.jpg",
+    "tvmazeId": 48450
+  },
+  "Naruto": {
+    "title": "Naruto",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/3/9744.jpg",
+    "tvmazeId": 495
+  },
+  "Attack on Titan": {
+    "title": "Attack on Titan",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/476/1191684.jpg",
+    "tvmazeId": 919
+  },
+  "Demon Slayer": {
+    "title": "Demon Slayer",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/456/1140750.jpg",
+    "tvmazeId": 41469
+  },
+  "Fullmetal Alchemist Brotherhood": {
+    "title": "Fullmetal Alchemist Brotherhood",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/485/1214095.jpg",
+    "tvmazeId": 2071
+  },
+  "Death Note": {
+    "title": "Death Note",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/499/1249019.jpg",
+    "tvmazeId": 40
+  },
+  "One Punch Man": {
+    "title": "One Punch Man",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/598/1496471.jpg",
+    "tvmazeId": 4201
+  },
+  "Tokyo Ghoul": {
+    "title": "Tokyo Ghoul",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/604/1510953.jpg",
+    "tvmazeId": 1440
+  },
+  "My Hero Academia": {
+    "title": "My Hero Academia",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/599/1499141.jpg",
+    "tvmazeId": 13615
+  },
+  "Sword Art Online": {
+    "title": "Sword Art Online",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/573/1434479.jpg",
+    "tvmazeId": 2059
+  },
+  "Hunter x Hunter": {
+    "title": "Hunter x Hunter",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/223/559165.jpg",
+    "tvmazeId": 1536
+  },
+  "Cowboy Bebop": {
+    "title": "Cowboy Bebop",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/178/446548.jpg",
+    "tvmazeId": 1121
+  },
+  "Steins Gate": {
+    "title": "Steins Gate",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/373/933178.jpg",
+    "tvmazeId": 2051
+  },
+  "Mob Psycho 100": {
+    "title": "Mob Psycho 100",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/508/1270187.jpg",
+    "tvmazeId": 18260
+  },
+  "Neon Genesis Evangelion": {
+    "title": "Neon Genesis Evangelion",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/11/27792.jpg",
+    "tvmazeId": 1925
+  },
+  "One Piece": {
+    "title": "One Piece",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/504/1262497.jpg",
+    "tvmazeId": 1505
+  },
+  "Violet Evergarden": {
+    "title": "Violet Evergarden",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/504/1261954.jpg",
+    "tvmazeId": 34013
+  },
+  "Chainsaw Man": {
+    "title": "Chainsaw Man",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/422/1056726.jpg",
+    "tvmazeId": 63451
+  },
+  "Crash Landing on You": {
+    "title": "Crash Landing on You",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/235/588087.jpg",
+    "tvmazeId": 42756
+  },
+  "Guardian The Lonely and Great God": {
+    "title": "Guardian The Lonely and Great God",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/532/1330901.jpg",
+    "tvmazeId": 16150
+  },
+  "Descendants of the Sun": {
+    "title": "Descendants of the Sun",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/46/115575.jpg",
+    "tvmazeId": 9426
+  },
+  "Itaewon Class": {
+    "title": "Itaewon Class",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/236/591651.jpg",
+    "tvmazeId": 45540
+  },
+  "Squid Game": {
+    "title": "Squid Game",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/576/1440521.jpg",
+    "tvmazeId": 43687
+  },
+  "Hospital Playlist": {
+    "title": "Hospital Playlist",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/323/807792.jpg",
+    "tvmazeId": 46260
+  },
+  "Reply 1988": {
+    "title": "Reply 1988",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/27/67574.jpg",
+    "tvmazeId": 7269
+  },
+  "Vincenzo": {
+    "title": "Vincenzo",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/481/1202670.jpg",
+    "tvmazeId": 52656
+  },
+  "Its Okay to Not Be Okay": {
+    "title": "Its Okay to Not Be Okay",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/260/651608.jpg",
+    "tvmazeId": 48104
+  },
+  "My Love from the Star": {
+    "title": "My Love from the Star",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/18/47470.jpg",
+    "tvmazeId": 3704
+  },
+  "Alchemy of Souls": {
+    "title": "Alchemy of Souls",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/609/1523773.jpg",
+    "tvmazeId": 62248
+  },
+  "Hometown Cha-Cha-Cha": {
+    "title": "Hometown Cha-Cha-Cha",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/609/1523777.jpg",
+    "tvmazeId": 56464
+  },
+  "The Wedding Party": {
+    "title": "The Wedding Party",
+    "image": null
+  },
+  "Lionheart": {
+    "title": "Lionheart",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/481/1204395.jpg",
+    "tvmazeId": 72022
+  },
+  "King of Boys": {
+    "title": "King of Boys",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/352/880119.jpg",
+    "tvmazeId": 57125
+  },
+  "Half of a Yellow Sun": {
+    "title": "Half of a Yellow Sun",
+    "image": null
+  }
+}

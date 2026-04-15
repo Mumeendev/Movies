@@ -41,7 +41,7 @@ const moviesData = [
         title: "Akira",
         category: "Anime",
         year: 1988,
-        image: "https://image.tmdb.org/t/p/w500/neZ0ykEsP8eAbcwDCPPF3fjVpOm.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/300/751059.jpg",
         description: "In a dystopian Neo-Tokyo, a biker gang member gains telekinetic powers that threaten the city.",
         themes: "Power, Corruption, Friendship, Dystopia",
         director: "Katsuhiro Otomo",
@@ -53,7 +53,7 @@ const moviesData = [
         title: "Jujutsu Kaisen",
         category: "Anime",
         year: 2020,
-        image: "https://image.tmdb.org/t/p/w500/wjQ6ZbqWJkZ5qMqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/608/1521905.jpg",
         description: "A high school student joins a secret organization of sorcerers to fight powerful curses after swallowing a cursed finger.",
         themes: "Good vs Evil, Friendship, Sacrifice, Power",
         director: "Sunghoo Park",
@@ -65,7 +65,7 @@ const moviesData = [
         title: "Naruto",
         category: "Anime",
         year: 2002,
-        image: "https://image.tmdb.org/t/p/w500/x2MxHqLqLqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/3/9744.jpg",
         description: "A young ninja with a sealed demon fox inside him dreams of becoming the strongest leader of his village.",
         themes: "Perseverance, Friendship, Destiny, Redemption",
         director: "Hayato Date",
@@ -77,7 +77,7 @@ const moviesData = [
         title: "Attack on Titan",
         category: "Anime",
         year: 2013,
-        image: "https://image.tmdb.org/t/p/w500/hTP1DtLGF1FqYs8qLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/476/1191684.jpg",
         description: "Humanity lives inside cities surrounded by enormous walls as protection against gigantic man-eating humanoids.",
         themes: "Freedom, Survival, War, Truth",
         director: "Tetsuro Araki",
@@ -89,7 +89,7 @@ const moviesData = [
         title: "Demon Slayer",
         category: "Anime",
         year: 2019,
-        image: "https://image.tmdb.org/t/p/w500/wrCVHdkBlwwYNHqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/456/1140750.jpg",
         description: "A young boy becomes a demon slayer after his family is slaughtered and his sister is turned into a demon.",
         themes: "Family, Determination, Good vs Evil, Tragedy",
         director: "Haruo Sotozaki",
@@ -101,7 +101,7 @@ const moviesData = [
         title: "Crash Landing on You",
         category: "Kdrama",
         year: 2019,
-        image: "https://image.tmdb.org/t/p/w500/tD8WjMgFYdXbqTjKHVjBwJpXGfE.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/235/588087.jpg",
         description: "A South Korean heiress accidentally paraglides into North Korea and falls in love with an army officer.",
         themes: "Love, Division, Loyalty, Cultural Differences",
         director: "Lee Jung-hyo",
@@ -113,7 +113,7 @@ const moviesData = [
         title: "Goblin: The Lonely and Great God",
         category: "Kdrama",
         year: 2016,
-        image: "https://image.tmdb.org/t/p/w500/3JkSF5Y4rV8gXqCJbqLqJqLqLqJ.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/532/1330901.jpg",
         description: "An immortal goblin seeks to end his cursed life by finding his destined bride, the Goblin's Bride.",
         themes: "Fate, Immortality, Sacrifice, Destiny",
         director: "Lee Eung-bok",
@@ -125,7 +125,7 @@ const moviesData = [
         title: "Descendants of the Sun",
         category: "Kdrama",
         year: 2016,
-        image: "https://image.tmdb.org/t/p/w500/rXhFdKbJYqLqLqLqLqLqLqLqLqL.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/46/115575.jpg",
         description: "A love story between a soldier and a doctor unfolds against the backdrop of war-torn nations.",
         themes: "Duty, Love, Heroism, Sacrifice",
         director: "Lee Eung-bok",
@@ -137,7 +137,7 @@ const moviesData = [
         title: "Itaewon Class",
         category: "Kdrama",
         year: 2020,
-        image: "https://image.tmdb.org/t/p/w500/sKqLqLqLqLqLqLqLqLqLqLqLqLq.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/236/591651.jpg",
         description: "An ex-convict opens a bar-restaurant to seek revenge on the food company that destroyed his family.",
         themes: "Revenge, Ambition, Justice, Entrepreneurship",
         director: "Kim Sung-yoon",
@@ -161,7 +161,7 @@ const moviesData = [
         title: "Lionheart",
         category: "Nollywood",
         year: 2018,
-        image: "https://image.tmdb.org/t/p/w500/lH8LqLqLqLqLqLqLqLqLqLqLqLq.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/481/1204395.jpg",
         description: "A woman takes over her father's transport company and fights to prove herself in a male-dominated industry.",
         themes: "Leadership, Gender Equality, Family Business, Tradition",
         director: "Genevieve Nnaji",
@@ -173,7 +173,7 @@ const moviesData = [
         title: "King of Boys",
         category: "Nollywood",
         year: 2018,
-        image: "https://image.tmdb.org/t/p/w500/kB8LqLqLqLqLqLqLqLqLqLqLqLq.jpg",
+        image: "https://static.tvmaze.com/uploads/images/original_untouched/352/880119.jpg",
         description: "A businesswoman and politician becomes entangled in a dangerous power struggle with a young soldier.",
         themes: "Power, Politics, Ambition, Survival",
         director: "Kemi Adetiba",
@@ -251,8 +251,14 @@ const movieDetailContent = document.getElementById('movie-detail-content');
 const commentForm = document.getElementById('comment-form');
 const commentsContainer = document.getElementById('comments-container');
 
+// Backend API URL
+const API_URL = 'http://localhost:3000/api';
+
+// Generate user ID for tracking
+const userId = 'user_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+
 // Initialize
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     if (!movieId) {
         window.location.href = 'movies.html';
         return;
@@ -265,14 +271,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderMovieDetail(movie);
-    loadComments(movieId);
+    await loadComments(movieId);
     setupEventListeners(movieId);
     initializeSearch();
-    
-    // Listen for comment updates from other tabs
-    if (typeof sharedComments !== 'undefined') {
-        sharedComments.addListener(movieId, () => loadComments(movieId));
-    }
 });
 
 // Render Movie Detail
@@ -353,71 +354,82 @@ function loadRatings() {
     });
 }
 
-// Load Comments
-function loadComments(movieId) {
-    const comments = typeof sharedComments !== 'undefined' 
-        ? sharedComments.getComments(movieId) 
-        : JSON.parse(localStorage.getItem(`comments_${movieId}`)) || [];
+// Load Comments from Backend
+async function loadComments(movieId) {
+    try {
+        const response = await fetch(`${API_URL}/comments/${movieId}`);
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch comments');
+        }
 
-    if (comments.length === 0) {
+        const comments = await response.json();
+
+        if (comments.length === 0) {
+            commentsContainer.innerHTML = `
+                <div class="no-comments">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">💬</div>
+                    <p>No comments yet. Be the first to share your thoughts!</p>
+                </div>
+            `;
+            return;
+        }
+
         commentsContainer.innerHTML = `
-            <div class="no-comments">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">💬</div>
-                <p>No comments yet. Be the first to share your thoughts!</p>
+            <div class="comments-header">
+                <h3>💬 ${comments.length} Comment${comments.length !== 1 ? 's' : ''}</h3>
+            </div>
+            <div class="comments-list">
+                ${comments.map(comment => `
+                    <div class="comment-card ${comment.userId === userId ? 'own-comment' : ''}">
+                        <div class="comment-header">
+                            <div class="comment-author-info">
+                                <span class="comment-author">${escapeHtml(comment.name)}</span>
+                                ${comment.userId === userId ? '<span class="own-comment-badge">You</span>' : ''}
+                            </div>
+                            <span class="comment-date">${comment.date}</span>
+                        </div>
+                        <p class="comment-text">${escapeHtml(comment.text)}</p>
+                    </div>
+                `).join('')}
             </div>
         `;
-        return;
+    } catch (error) {
+        console.error('Error loading comments:', error);
+        commentsContainer.innerHTML = `
+            <div class="no-comments">
+                <p>Unable to load comments. Please try again later.</p>
+            </div>
+        `;
     }
-
-    const currentUserId = typeof sharedComments !== 'undefined' 
-        ? sharedComments.getUserId() 
-        : '';
-
-    commentsContainer.innerHTML = `
-        <div class="comments-header">
-            <h3>💬 ${comments.length} Comment${comments.length !== 1 ? 's' : ''}</h3>
-        </div>
-        <div class="comments-list">
-            ${comments.map(comment => `
-                <div class="comment-card ${comment.userId === currentUserId ? 'own-comment' : ''}">
-                    <div class="comment-header">
-                        <div class="comment-author-info">
-                            <span class="comment-author">${typeof sharedComments !== 'undefined' ? sharedComments.escapeHtml(comment.name) : escapeHtml(comment.name)}</span>
-                            ${comment.userId === currentUserId ? '<span class="own-comment-badge">You</span>' : ''}
-                        </div>
-                        <span class="comment-date">${comment.date}</span>
-                    </div>
-                    <p class="comment-text">${typeof sharedComments !== 'undefined' ? sharedComments.escapeHtml(comment.text) : escapeHtml(comment.text)}</p>
-                </div>
-            `).join('')}
-        </div>
-    `;
 }
 
-// Add Comment
-function addComment(movieId, name, text) {
-    if (typeof sharedComments !== 'undefined') {
-        sharedComments.addComment(movieId, name, text);
-    } else {
-        const comments = JSON.parse(localStorage.getItem(`comments_${movieId}`)) || [];
-        const newComment = {
-            userId: '',
-            name: name,
-            text: text,
-            date: new Date().toLocaleString('en-US', { 
-                year: 'numeric', 
-                month: 'short', 
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
+// Add Comment via Backend API
+async function addComment(movieId, name, text) {
+    try {
+        const response = await fetch(`${API_URL}/comments`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                movieId: movieId,
+                userId: userId,
+                name: name,
+                text: text
             })
-        };
-        comments.unshift(newComment);
-        localStorage.setItem(`comments_${movieId}`, JSON.stringify(comments));
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to add comment');
+        }
+
+        await loadComments(movieId);
+        showNotification('Comment posted successfully! 💬');
+    } catch (error) {
+        console.error('Error adding comment:', error);
+        showNotification('Failed to post comment. Please try again.');
     }
-    
-    loadComments(movieId);
-    showNotification('Comment posted successfully! 💬');
 }
 
 // Escape HTML to prevent XSS
@@ -484,27 +496,35 @@ function setupEventListeners(movieId) {
 function initializeSearch() {
     const searchInput = document.getElementById('nav-search');
     const searchResults = document.getElementById('search-results');
-    
+
     if (!searchInput || !searchResults) return;
+
+    let searchTimeout = null;
 
     searchInput.addEventListener('input', (e) => {
         const query = e.target.value.trim().toLowerCase();
-        
+
         if (query.length < 2) {
             searchResults.classList.remove('active');
             searchResults.innerHTML = '';
             return;
         }
 
-        const results = searchMovies(query);
-        displaySearchResults(results, query);
+        // Clear previous timeout
+        if (searchTimeout) {
+            clearTimeout(searchTimeout);
+        }
+
+        // Debounce search to avoid too many API calls
+        searchTimeout = setTimeout(() => {
+            searchMoviesWithTVMaze(query);
+        }, 300);
     });
 
     searchInput.addEventListener('focus', () => {
         const query = searchInput.value.trim().toLowerCase();
         if (query.length >= 2) {
-            const results = searchMovies(query);
-            displaySearchResults(results, query);
+            searchMoviesWithTVMaze(query);
         }
     });
 
@@ -537,7 +557,31 @@ function initializeSearch() {
     });
 }
 
-function searchMovies(query) {
+async function searchMoviesWithTVMaze(query) {
+    const searchResults = document.getElementById('search-results');
+    
+    try {
+        // Show loading state
+        searchResults.innerHTML = `
+            <div class="search-loading">
+                <span>🔍</span>
+                <p>Searching...</p>
+            </div>
+        `;
+        searchResults.classList.add('active');
+
+        // Search with TVMaze API fallback
+        const results = await searchWithFallback(query, moviesData, 8);
+        displaySearchResults(results, query);
+    } catch (error) {
+        console.error('Search error:', error);
+        // Fallback to local search only
+        const localResults = searchMoviesLocal(query);
+        displaySearchResults(localResults, query);
+    }
+}
+
+function searchMoviesLocal(query) {
     return moviesData.filter(movie => {
         const searchableText = [
             movie.title,
@@ -554,33 +598,57 @@ function searchMovies(query) {
 
 function displaySearchResults(results, query) {
     const searchResults = document.getElementById('search-results');
-    
+
     if (results.length === 0) {
         searchResults.innerHTML = `
             <div class="search-no-results">
                 <span>🎬</span>
                 <p>No movies found matching "<strong>${escapeHtml(query)}</strong>"</p>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Try searching by title, category, director, or themes</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Try searching by title, category, genre (e.g., "drama", "anime"), or themes</p>
             </div>
         `;
         searchResults.classList.add('active');
         return;
     }
 
-    searchResults.innerHTML = results.map(movie => `
-        <a href="movie-detail.html?id=${movie.id}" class="search-result-item">
-            <div class="search-result-poster">
-                <img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"
-                     onerror="handleMovieImageError(this, '${movie.title.replace(/'/g, "\\'")}')">
-            </div>
-            <div class="search-result-info">
-                <div class="search-result-title">${highlightText(movie.title, query)}</div>
-                <div class="search-result-meta">
-                    ${movie.category} • ${movie.year} • ${movie.director}
-                </div>
-            </div>
-        </a>
-    `).join('');
+    searchResults.innerHTML = results.map(movie => {
+        const matchBadge = movie.matchType ? 
+            `<span class="match-type-badge match-${movie.matchType}">${movie.matchType}</span>` : '';
+
+        if (movie.isFromTVMaze) {
+            // TVMaze result
+            return `
+                <a href="${movie.url}" target="_blank" class="search-result-item tvmaze-result match-${movie.matchType || 'direct'}">
+                    <div class="search-result-poster">
+                        <img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'search-poster-fallback\\'>${movie.title.charAt(0)}</div>'">
+                    </div>
+                    <div class="search-result-info">
+                        <div class="search-result-title">${highlightText(movie.title, query)} ${matchBadge}</div>
+                        <div class="search-result-meta">
+                            ${movie.category} • ${movie.year} • <span class="tvmaze-badge">TVMaze</span>
+                        </div>
+                    </div>
+                </a>
+            `;
+        } else {
+            // Local movie result
+            return `
+                <a href="movie-detail.html?id=${movie.id}" class="search-result-item match-${movie.matchType || 'direct'}">
+                    <div class="search-result-poster">
+                        <img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"
+                             onerror="handleMovieImageError(this, '${movie.title.replace(/'/g, "\\'")}')">
+                    </div>
+                    <div class="search-result-info">
+                        <div class="search-result-title">${highlightText(movie.title, query)} ${matchBadge}</div>
+                        <div class="search-result-meta">
+                            ${movie.category} • ${movie.year} • ${movie.director}
+                        </div>
+                    </div>
+                </a>
+            `;
+        }
+    }).join('');
 
     searchResults.classList.add('active');
 }

@@ -228,12 +228,65 @@ const modalBody = document.getElementById('modal-body');
 const closeModal = document.querySelector('.close-modal');
 
 // Initialize
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     renderCategoryTabs();
+    
+    // Try to load from TVMaze API first
+    await loadMoviesFromTVMaze();
+    
     renderMovies();
     setupEventListeners();
     loadRatings();
 });
+
+// Load movies from TVMaze API
+async function loadMoviesFromTVMaze() {
+    const moviesGrid = document.getElementById('movies-grid');
+    
+    try {
+        // Show loading state
+        if (moviesGrid) {
+            moviesGrid.innerHTML = `
+                <div class="loading-tvmaze">
+                    <div class="loading-spinner"></div>
+                    <p>Loading featured movies...</p>
+                </div>
+            `;
+        }
+
+        // Fetch popular shows from TVMaze
+        const popularShows = await fetchPopularShows(30);
+        const dramaShows = await fetchShowsByGenre('drama', 20);
+        const comedyShows = await fetchShowsByGenre('comedy', 20);
+        const thrillerShows = await fetchShowsByGenre('thriller', 20);
+
+        // Combine with local movies and deduplicate
+        const allShows = new Map();
+        
+        // Add local movies first
+        movies.forEach(movie => {
+            allShows.set(movie.title.toLowerCase(), movie);
+        });
+
+        // Add TVMaze shows
+        [...popularShows, ...dramaShows, ...comedyShows, ...thrillerShows]
+            .filter(show => show !== null)
+            .forEach(show => {
+                if (!allShows.has(show.title.toLowerCase())) {
+                    allShows.set(show.title.toLowerCase(), show);
+                }
+            });
+
+        // Update the movies array with combined results
+        window.allMovies = Array.from(allShows.values());
+        
+        console.log(`✅ Loaded ${window.allMovies.length} movies (${movies.length} local + ${window.allMovies.length - movies.length} from TVMaze)`);
+        
+    } catch (error) {
+        console.error('⚠️ Failed to load from TVMaze, using local movies:', error);
+        window.allMovies = movies;
+    }
+}
 
 // Render Category Tabs
 function renderCategoryTabs() {
@@ -263,12 +316,24 @@ function filterByCategory(category) {
 
 // Render Movies
 function renderMovies() {
-    const filteredMovies = currentCategory === 'All' 
-        ? movies 
-        : movies.filter(movie => movie.category === currentCategory);
+    // Use combined movies array (local + TVMaze)
+    const moviesToRender = window.allMovies || movies;
     
+    const filteredMovies = currentCategory === 'All'
+        ? moviesToRender
+        : moviesToRender.filter(movie => movie.category === currentCategory);
+
     moviesGrid.innerHTML = '';
-    
+
+    if (filteredMovies.length === 0) {
+        moviesGrid.innerHTML = `
+            <div class="loading-tvmaze">
+                <p>No movies in this category yet.</p>
+            </div>
+        `;
+        return;
+    }
+
     filteredMovies.forEach(movie => {
         const movieCard = createMovieCard(movie);
         moviesGrid.appendChild(movieCard);
@@ -279,18 +344,31 @@ function renderMovies() {
 function createMovieCard(movie) {
     const card = document.createElement('div');
     card.className = 'movie-card';
-    
+
     const stars = [1, 2, 3, 4, 5].map(num => {
         const star = document.createElement('span');
-        star.className = 'star' + (num <= movie.rating ? ' active' : '');
+        star.className = 'star' + (num <= (movie.rating || 0) ? ' active' : '');
         star.innerHTML = '★';
         star.addEventListener('click', () => rateMovie(movie.id, num));
         return star;
     });
-    
+
+    // TVMaze badge
+    const tvmazeBadge = movie.isFromTVMaze ? 
+        '<span class="tvmaze-source-badge">TVMaze</span>' : '';
+
+    // Image HTML
+    const imageHtml = movie.image ?
+        `<img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;" onerror="handleMovieImageError(this, '${movie.title.replace(/'/g, "\\'")}')">` :
+        `<div class="poster-fallback-dynamic" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <div class="fallback-initial">${movie.title.charAt(0).toUpperCase()}</div>
+            <div class="fallback-title">${movie.title}</div>
+        </div>`;
+
     card.innerHTML = `
         <div class="movie-poster">
-            ${movie.emoji}
+            ${tvmazeBadge}
+            ${imageHtml}
         </div>
         <div class="movie-info">
             <h3 class="movie-title">${movie.title}</h3>
@@ -305,16 +383,30 @@ function createMovieCard(movie) {
                 </div>
                 <span class="rating-value">${movie.rating > 0 ? movie.rating + '/5' : 'Not rated'}</span>
             </div>
-            <button class="btn-preview" data-id="${movie.id}">Preview</button>
+            <button class="btn-preview" data-id="${movie.id}">
+                ${movie.isFromTVMaze ? 'View on TVMaze ↗' : 'Preview'}
+            </button>
         </div>
     `;
-    
+
+    // Add click handler for the button
+    const previewBtn = card.querySelector('.btn-preview');
+    previewBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (movie.isFromTVMaze && movie.url) {
+            window.open(movie.url, '_blank');
+        } else {
+            showMoviePreview(movie.id);
+        }
+    });
+
     return card;
 }
 
 // Rate Movie
 function rateMovie(movieId, rating) {
-    const movie = movies.find(m => m.id === movieId);
+    const moviesToRate = window.allMovies || movies;
+    const movie = moviesToRate.find(m => m.id === movieId);
     if (movie) {
         movie.rating = rating;
         saveRatings();
@@ -324,8 +416,9 @@ function rateMovie(movieId, rating) {
 
 // Save Ratings to LocalStorage
 function saveRatings() {
+    const moviesToSave = window.allMovies || movies;
     const ratings = {};
-    movies.forEach(movie => {
+    moviesToSave.forEach(movie => {
         if (movie.rating > 0) {
             ratings[movie.id] = movie.rating;
         }
@@ -335,8 +428,9 @@ function saveRatings() {
 
 // Load Ratings from LocalStorage
 function loadRatings() {
+    const moviesToLoad = window.allMovies || movies;
     const ratings = JSON.parse(localStorage.getItem('movieRatings')) || {};
-    movies.forEach(movie => {
+    moviesToLoad.forEach(movie => {
         if (ratings[movie.id]) {
             movie.rating = ratings[movie.id];
         }
@@ -345,7 +439,8 @@ function loadRatings() {
 
 // Show Movie Preview
 function showMoviePreview(movieId) {
-    const movie = movies.find(m => m.id === movieId);
+    const moviesToPreview = window.allMovies || movies;
+    const movie = moviesToPreview.find(m => m.id === movieId);
     if (!movie) return;
     
     modalBody.innerHTML = `
@@ -427,33 +522,167 @@ function setupEventListeners() {
 
     // Initialize search
     initializeSearch();
+    initializeHeroSearch();
 }
 
 // ==================== SEARCH FUNCTIONALITY ====================
+
+// Initialize Hero Search (on landing page)
+function initializeHeroSearch() {
+    const heroSearchInput = document.getElementById('hero-search');
+    const heroSearchResults = document.getElementById('hero-search-results');
+
+    if (!heroSearchInput || !heroSearchResults) return;
+
+    let searchTimeout = null;
+
+    heroSearchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim().toLowerCase();
+
+        if (query.length < 2) {
+            heroSearchResults.classList.remove('active');
+            heroSearchResults.innerHTML = '';
+            return;
+        }
+
+        if (searchTimeout) {
+            clearTimeout(searchTimeout);
+        }
+
+        searchTimeout = setTimeout(async () => {
+            try {
+                heroSearchResults.innerHTML = `
+                    <div class="search-loading">
+                        <span>🔍</span>
+                        <p>Searching...</p>
+                    </div>
+                `;
+                heroSearchResults.classList.add('active');
+
+                const results = await searchWithFallback(query, window.allMovies || movies, 10);
+                displayHeroSearchResults(results, query);
+            } catch (error) {
+                console.error('Hero search error:', error);
+            }
+        }, 300);
+    });
+
+    heroSearchInput.addEventListener('keydown', (e) => {
+        const items = heroSearchResults.querySelectorAll('.search-result-item');
+        const activeItem = heroSearchResults.querySelector('.search-result-item:hover');
+        const currentIndex = Array.from(items).indexOf(activeItem);
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const nextIndex = (currentIndex + 1) % items.length;
+            items[nextIndex]?.focus();
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prevIndex = (currentIndex - 1 + items.length) % items.length;
+            items[prevIndex]?.focus();
+        } else if (e.key === 'Enter' && activeItem) {
+            e.preventDefault();
+            activeItem.click();
+        } else if (e.key === 'Escape') {
+            heroSearchResults.classList.remove('active');
+            heroSearchInput.blur();
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.hero-search-box')) {
+            heroSearchResults.classList.remove('active');
+        }
+    });
+}
+
+function displayHeroSearchResults(results, query) {
+    const heroSearchResults = document.getElementById('hero-search-results');
+
+    if (results.length === 0) {
+        heroSearchResults.innerHTML = `
+            <div class="search-no-results">
+                <span>🎬</span>
+                <p>No movies found matching "<strong>${escapeHtml(query)}</strong>"</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Try searching by title, genre, or themes</p>
+            </div>
+        `;
+        heroSearchResults.classList.add('active');
+        return;
+    }
+
+    heroSearchResults.innerHTML = results.map(movie => {
+        const matchBadge = movie.matchType ? 
+            `<span class="match-type-badge match-${movie.matchType}">${movie.matchType}</span>` : '';
+
+        if (movie.isFromTVMaze) {
+            return `
+                <a href="${movie.url}" target="_blank" class="search-result-item tvmaze-result match-${movie.matchType || 'direct'}">
+                    <div class="search-result-poster">
+                        <img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"
+                             onerror="this.parentElement.innerHTML='<div class=\\'search-poster-fallback\\'>${movie.title.charAt(0)}</div>'">
+                    </div>
+                    <div class="search-result-info">
+                        <div class="search-result-title">${highlightText(movie.title, query)} ${matchBadge}</div>
+                        <div class="search-result-meta">
+                            ${movie.category} • ${movie.year} • <span class="tvmaze-badge">TVMaze</span>
+                        </div>
+                    </div>
+                </a>
+            `;
+        } else {
+            return `
+                <a href="movie-detail.html?id=${movie.id}" class="search-result-item match-${movie.matchType || 'direct'}">
+                    <div class="search-result-poster">
+                        <img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"
+                             onerror="handleMovieImageError(this, '${movie.title.replace(/'/g, "\\'")}')">
+                    </div>
+                    <div class="search-result-info">
+                        <div class="search-result-title">${highlightText(movie.title, query)} ${matchBadge}</div>
+                        <div class="search-result-meta">
+                            ${movie.category} • ${movie.year} • ${movie.director}
+                        </div>
+                    </div>
+                </a>
+            `;
+        }
+    }).join('');
+
+    heroSearchResults.classList.add('active');
+}
+
 function initializeSearch() {
     const searchInput = document.getElementById('nav-search');
     const searchResults = document.getElementById('search-results');
-    
+
     if (!searchInput || !searchResults) return;
+
+    let searchTimeout = null;
 
     searchInput.addEventListener('input', (e) => {
         const query = e.target.value.trim().toLowerCase();
-        
+
         if (query.length < 2) {
             searchResults.classList.remove('active');
             searchResults.innerHTML = '';
             return;
         }
 
-        const results = searchMovies(query);
-        displaySearchResults(results, query);
+        // Clear previous timeout
+        if (searchTimeout) {
+            clearTimeout(searchTimeout);
+        }
+
+        // Debounce search to avoid too many API calls
+        searchTimeout = setTimeout(() => {
+            searchMoviesWithTVMaze(query);
+        }, 300);
     });
 
     searchInput.addEventListener('focus', () => {
         const query = searchInput.value.trim().toLowerCase();
         if (query.length >= 2) {
-            const results = searchMovies(query);
-            displaySearchResults(results, query);
+            searchMoviesWithTVMaze(query);
         }
     });
 
@@ -486,8 +715,33 @@ function initializeSearch() {
     });
 }
 
-function searchMovies(query) {
-    return movies.filter(movie => {
+async function searchMoviesWithTVMaze(query) {
+    const searchResults = document.getElementById('search-results');
+    
+    try {
+        // Show loading state
+        searchResults.innerHTML = `
+            <div class="search-loading">
+                <span>🔍</span>
+                <p>Searching...</p>
+            </div>
+        `;
+        searchResults.classList.add('active');
+
+        // Search with TVMaze API fallback
+        const results = await searchWithFallback(query, movies, 8);
+        displaySearchResults(results, query);
+    } catch (error) {
+        console.error('Search error:', error);
+        // Fallback to local search only
+        const localResults = searchMoviesLocal(query);
+        displaySearchResults(localResults, query);
+    }
+}
+
+function searchMoviesLocal(query) {
+    const moviesToSearch = window.allMovies || movies;
+    return moviesToSearch.filter(movie => {
         const searchableText = [
             movie.title,
             movie.category,
@@ -503,32 +757,57 @@ function searchMovies(query) {
 
 function displaySearchResults(results, query) {
     const searchResults = document.getElementById('search-results');
-    
+
     if (results.length === 0) {
         searchResults.innerHTML = `
             <div class="search-no-results">
                 <span>🎬</span>
                 <p>No movies found matching "<strong>${escapeHtml(query)}</strong>"</p>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Try searching by title, category, director, or themes</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Try searching by title, category, genre (e.g., "drama", "anime"), or themes</p>
             </div>
         `;
         searchResults.classList.add('active');
         return;
     }
 
-    searchResults.innerHTML = results.map(movie => `
-        <a href="movie-detail.html?id=${movie.id}" class="search-result-item">
-            <div class="search-result-poster">
-                ${movie.emoji || '🎬'}
-            </div>
-            <div class="search-result-info">
-                <div class="search-result-title">${highlightText(movie.title, query)}</div>
-                <div class="search-result-meta">
-                    ${movie.category} • ${movie.year} • ${movie.director}
-                </div>
-            </div>
-        </a>
-    `).join('');
+    searchResults.innerHTML = results.map(movie => {
+        const matchBadge = movie.matchType ? 
+            `<span class="match-type-badge match-${movie.matchType}">${movie.matchType}</span>` : '';
+
+        if (movie.isFromTVMaze) {
+            // TVMaze result
+            return `
+                <a href="${movie.url}" target="_blank" class="search-result-item tvmaze-result match-${movie.matchType || 'direct'}">
+                    <div class="search-result-poster">
+                        <img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'search-poster-fallback\\'>${movie.title.charAt(0)}</div>'">
+                    </div>
+                    <div class="search-result-info">
+                        <div class="search-result-title">${highlightText(movie.title, query)} ${matchBadge}</div>
+                        <div class="search-result-meta">
+                            ${movie.category} • ${movie.year} • <span class="tvmaze-badge">TVMaze</span>
+                        </div>
+                    </div>
+                </a>
+            `;
+        } else {
+            // Local movie result
+            return `
+                <a href="movie-detail.html?id=${movie.id}" class="search-result-item match-${movie.matchType || 'direct'}">
+                    <div class="search-result-poster">
+                        <img src="${movie.image}" alt="${movie.title}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;"
+                             onerror="handleMovieImageError(this, '${movie.title.replace(/'/g, "\\'")}')">
+                    </div>
+                    <div class="search-result-info">
+                        <div class="search-result-title">${highlightText(movie.title, query)} ${matchBadge}</div>
+                        <div class="search-result-meta">
+                            ${movie.category} • ${movie.year} • ${movie.director}
+                        </div>
+                    </div>
+                </a>
+            `;
+        }
+    }).join('');
 
     searchResults.classList.add('active');
 }
